@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/esri.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ArcGIS JS</title>
+  </head>
+  <body>
+    <calcite-shell>
+      <calcite-shell-panel slot="panel-end" position="end">
+        <div id="inputContainer">
+          <calcite-label layout="inline">
+            <calcite-switch id="playAnimationSwitch" checked>
+            </calcite-switch>
+            playAnimation
+          </calcite-label>
+
+          <calcite-label layout="inline">
+            <calcite-switch id="reverseAnimationSwitch"> </calcite-switch>
+            reverseAnimation
+          </calcite-label>
+
+          <calcite-label layout="inline">
+            <calcite-switch id="randomizeStartTimeSwitch"> </calcite-switch>
+            randomizeStartTime
+          </calcite-label>
+
+          <calcite-label >
+            randomizeStartSeed
+            <calcite-input-number id="randomizeStartSeedInput" value="1" step="1" suffix-text="seconds" disabled> </calcite-input>
+          </calcite-label>
+
+          <calcite-label >
+            startTimeOffset (seconds)
+            <calcite-slider id="startTimeOffsetInput" value="0" max="4" step="0.1" precise label-handles></calcite-slider>
+          </calcite-label>
+
+          <calcite-label>
+            duration
+            <calcite-input-number id="durationInput" value="4" min="0" step="0.1" suffix-text="seconds"> </calcite-input>
+          </calcite-label>
+
+          <calcite-label>
+              repeatType
+              <calcite-select id="repeatTypeSelect">
+                <calcite-option value="Loop">Loop</calcite-option>
+                <calcite-option value="None">None</calcite-option>
+                <calcite-option value="Oscillate" selected>Oscillate</calcite-option>
+            </calcite-select>
+          </calcite-label>
+
+          <calcite-label>
+            repeatDelay
+            <calcite-input-number id="repeatDelayInput" value="0" step="0.1" suffix-text="seconds"> </calcite-input>
+          </calcite-label>
+        </div>
+      </calcite-shell-panel>
+      <div id="viewDiv"></div>
+    </calcite-shell>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
