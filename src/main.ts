@@ -8,6 +8,7 @@ import ImageElement from "@arcgis/core/layers/support/ImageElement";
 import MapView from "@arcgis/core/views/MapView";
 import "@esri/calcite-components/dist/calcite/calcite.css";
 import { setAssetPath } from "@esri/calcite-components/dist/components";
+import "@esri/calcite-components/dist/components/calcite-block";
 import "@esri/calcite-components/dist/components/calcite-input-number";
 import "@esri/calcite-components/dist/components/calcite-label";
 import "@esri/calcite-components/dist/components/calcite-option";

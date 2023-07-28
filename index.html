@@ -9,7 +9,7 @@
   <body>
     <calcite-shell>
       <calcite-shell-panel slot="panel-end" position="end">
-        <div id="inputContainer">
+        <calcite-block open heading="Animation Options" >
           <calcite-label layout="inline">
             <calcite-switch id="playAnimationSwitch" checked>
             </calcite-switch>
@@ -54,7 +54,7 @@
             repeatDelay
             <calcite-input-number id="repeatDelayInput" value="0" step="0.1" suffix-text="seconds"> </calcite-input>
           </calcite-label>
-        </div>
+        </calcite-block>
       </calcite-shell-panel>
       <div id="viewDiv"></div>
     </calcite-shell>
