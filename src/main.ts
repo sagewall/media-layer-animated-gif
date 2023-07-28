@@ -43,7 +43,7 @@ imageElement.animationOptions = {
   playAnimation: true,
   reverseAnimation: false,
   randomizeStartTime: false,
-  randomizeStartSeed: 0,
+  randomizeStartSeed: 1,
   startTimeOffset: 0,
   duration: 4,
   repeatType: "Oscillate",
