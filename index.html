@@ -9,50 +9,44 @@
   <body>
     <calcite-shell>
       <calcite-shell-panel slot="panel-end" position="end">
-        <calcite-block open heading="Animation Options" >
+        <calcite-block open heading="Animation Options">
           <calcite-label layout="inline">
-            <calcite-switch id="playAnimationSwitch" checked>
-            </calcite-switch>
+            <calcite-switch id="playAnimationSwitch" checked> </calcite-switch>
             playAnimation
-          </calcite-label>
-
-          <calcite-label layout="inline">
-            <calcite-switch id="reverseAnimationSwitch"> </calcite-switch>
-            reverseAnimation
-          </calcite-label>
-
-          <calcite-label layout="inline">
-            <calcite-switch id="randomizeStartTimeSwitch"> </calcite-switch>
-            randomizeStartTime
-          </calcite-label>
-
-          <calcite-label >
-            randomizeStartSeed
-            <calcite-input-number id="randomizeStartSeedInput" value="1" step="1" suffix-text="seconds" disabled> </calcite-input>
-          </calcite-label>
-
-          <calcite-label >
-            startTimeOffset (seconds)
-            <calcite-slider id="startTimeOffsetInput" value="0" max="4" step="0.1" precise label-handles></calcite-slider>
           </calcite-label>
 
           <calcite-label>
             duration
-            <calcite-input-number id="durationInput" value="4" min="0" step="0.1" suffix-text="seconds"> </calcite-input>
+            <calcite-input-number
+              id="durationInput"
+              value="4"
+              min="0"
+              step="0.1"
+              suffix-text="seconds"
+            >
+            </calcite-input-number>
           </calcite-label>
 
           <calcite-label>
-              repeatType
-              <calcite-select id="repeatTypeSelect">
-                <calcite-option value="loop">loop</calcite-option>
-                <calcite-option value="none">none</calcite-option>
-                <calcite-option value="oscillate" selected>oscillate</calcite-option>
+            repeatType
+            <calcite-select id="repeatTypeSelect">
+              <calcite-option value="loop">loop</calcite-option>
+              <calcite-option value="none">none</calcite-option>
+              <calcite-option value="oscillate" selected
+                >oscillate</calcite-option
+              >
             </calcite-select>
           </calcite-label>
 
           <calcite-label>
             repeatDelay
-            <calcite-input-number id="repeatDelayInput" value="0" step="0.1" suffix-text="seconds"> </calcite-input>
+            <calcite-input-number
+              id="repeatDelayInput"
+              value="0"
+              step="0.1"
+              suffix-text="seconds"
+            >
+            </calcite-input-number>
           </calcite-label>
         </calcite-block>
       </calcite-shell-panel>

@@ -41,10 +41,6 @@ const imageElement = new ImageElement({
 
 imageElement.animationOptions = {
   playAnimation: true,
-  reverseAnimation: false,
-  randomizeStartTime: false,
-  randomizeStartSeed: 1,
-  startTimeOffset: 0,
   duration: 4,
   repeatType: "oscillate",
   repeatDelay: 0,
@@ -83,75 +79,23 @@ new MapView({
 const durationInput = document.getElementById(
   "durationInput"
 ) as HTMLCalciteInputNumberElement;
+
 const playAnimationSwitch = document.getElementById(
   "playAnimationSwitch"
 ) as HTMLCalciteSwitchElement;
-const randomizeStartSeedInput = document.getElementById(
-  "randomizeStartSeedInput"
-) as HTMLCalciteSwitchElement;
-const randomizeStartTimeSwitch = document.getElementById(
-  "randomizeStartTimeSwitch"
-) as HTMLCalciteSwitchElement;
+
 const repeatDelayInput = document.getElementById(
   "repeatDelayInput"
 ) as HTMLCalciteInputNumberElement;
+
 const repeatTypeSelect = document.getElementById(
   "repeatTypeSelect"
 ) as HTMLCalciteSelectElement;
-const reverseAnimationSwitch = document.getElementById(
-  "reverseAnimationSwitch"
-) as HTMLCalciteSwitchElement;
-const startTimeOffsetInput = document.getElementById(
-  "startTimeOffsetInput"
-) as HTMLCalciteSliderElement;
 
 playAnimationSwitch?.addEventListener("calciteSwitchChange", () => {
   imageElement.animationOptions = {
     ...imageElement.animationOptions,
     playAnimation: !imageElement.animationOptions.playAnimation,
-  };
-});
-
-reverseAnimationSwitch?.addEventListener("calciteSwitchChange", () => {
-  imageElement.animationOptions = {
-    ...imageElement.animationOptions,
-    reverseAnimation: !imageElement.animationOptions.reverseAnimation,
-  };
-});
-
-randomizeStartTimeSwitch?.addEventListener("calciteSwitchChange", () => {
-  imageElement.animationOptions = {
-    ...imageElement.animationOptions,
-    randomizeStartTime: !imageElement.animationOptions.randomizeStartTime,
-  };
-  imageElement.animationOptions.randomizeStartTime
-    ? (imageElement.animationOptions.startTimeOffset = undefined)
-    : (imageElement.animationOptions.startTimeOffset = <number>(
-        startTimeOffsetInput.value
-      ));
-  randomizeStartSeedInput.disabled =
-    !imageElement.animationOptions.randomizeStartTime;
-  startTimeOffsetInput.disabled = <boolean>(
-    imageElement.animationOptions.randomizeStartTime
-  );
-});
-
-randomizeStartSeedInput.addEventListener(
-  "calciteInputNumberChange",
-  (event) => {
-    const target = event.target as HTMLCalciteInputNumberElement;
-    imageElement.animationOptions = {
-      ...imageElement.animationOptions,
-      randomizeStartSeed: Number(target.value),
-    };
-  }
-);
-
-startTimeOffsetInput.addEventListener("calciteSliderInput", (event) => {
-  const target = event.target as HTMLCalciteSliderElement;
-  imageElement.animationOptions = {
-    ...imageElement.animationOptions,
-    startTimeOffset: Number(target.value),
   };
 });
 
@@ -161,7 +105,6 @@ durationInput.addEventListener("calciteInputNumberChange", (event) => {
     ...imageElement.animationOptions,
     duration: Number(target.value),
   };
-  startTimeOffsetInput.max = Number(target.value);
 });
 
 repeatTypeSelect.addEventListener("calciteSelectChange", (event) => {
