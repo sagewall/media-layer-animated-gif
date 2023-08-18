@@ -22,7 +22,7 @@ import "./style.css";
 setAssetPath("https://js.arcgis.com/calcite-components/1.6.0/assets");
 
 const imageUrl =
-  "https://sagewall.github.io/test-images/G16_conus_GEOCOLOR_60fr_20230727-1035.gif";
+  "https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/GOES16-CONUS-GEOCOLOR-625x375.gif";
 
 const imageElement = new ImageElement({
   image: imageUrl,
