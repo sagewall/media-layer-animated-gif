@@ -19,7 +19,7 @@ import "@esri/calcite-components/dist/components/calcite-slider";
 import "@esri/calcite-components/dist/components/calcite-switch";
 import "./style.css";
 
-setAssetPath("https://js.arcgis.com/calcite-components/1.5.1/assets");
+setAssetPath("https://js.arcgis.com/calcite-components/1.6.0/assets");
 
 const imageUrl =
   "https://sagewall.github.io/test-images/G16_conus_GEOCOLOR_60fr_20230727-1035.gif";
@@ -111,7 +111,7 @@ repeatTypeSelect.addEventListener("calciteSelectChange", (event) => {
   const target = event.target as HTMLCalciteSelectElement;
   imageElement.animationOptions = {
     ...imageElement.animationOptions,
-    repeatType: target.value as "Loop" | "None" | "Oscillate" | undefined,
+    repeatType: target.value as "loop" | "none" | "oscillate" | undefined,
   };
 });
 
