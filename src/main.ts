@@ -21,9 +21,11 @@ import "./style.css";
 
 setAssetPath("https://js.arcgis.com/calcite-components/1.9.1/assets");
 
+// a url to an animated gif from the GOES satellite available from NOAA
 const imageUrl =
   "https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/GOES16-CONUS-GEOCOLOR-625x375.gif";
 
+// create an image element with a georeference
 const imageElement = new ImageElement({
   image: imageUrl,
   georeference: new ExtentAndRotationGeoreference({
@@ -39,6 +41,7 @@ const imageElement = new ImageElement({
   }),
 });
 
+// set the animation options
 imageElement.animationOptions = {
   playAnimation: true,
   duration: 4,
@@ -46,10 +49,12 @@ imageElement.animationOptions = {
   repeatDelay: 0,
 };
 
+// create a media layer with the image element as the source
 const mediaLayer = new MediaLayer({
   source: [imageElement],
 });
 
+// create a feature layer to show state boundaries
 const statesFeatureLayer = new FeatureLayer({
   portalItem: {
     id: "56633b40c1744109a265af1dba673535",
@@ -58,11 +63,13 @@ const statesFeatureLayer = new FeatureLayer({
   popupEnabled: false,
 });
 
+// create a map with the media layer and the states layer
 const map = new Map({
   basemap: "topo-vector",
   layers: [statesFeatureLayer, mediaLayer],
 });
 
+// create a map view
 new MapView({
   background: {
     color: "gray",
@@ -76,22 +83,27 @@ new MapView({
   },
 });
 
+// get a reference to the duration input
 const durationInput = document.getElementById(
   "durationInput"
 ) as HTMLCalciteInputNumberElement;
 
+// get a reference to the play animation switch
 const playAnimationSwitch = document.getElementById(
   "playAnimationSwitch"
 ) as HTMLCalciteSwitchElement;
 
+// get a reference to the repeat delay input
 const repeatDelayInput = document.getElementById(
   "repeatDelayInput"
 ) as HTMLCalciteInputNumberElement;
 
+// get a reference to the repeat type select
 const repeatTypeSelect = document.getElementById(
   "repeatTypeSelect"
 ) as HTMLCalciteSelectElement;
 
+// update the image element animation options when the play animation switch is toggled
 playAnimationSwitch?.addEventListener("calciteSwitchChange", () => {
   imageElement.animationOptions = {
     ...imageElement.animationOptions,
@@ -99,6 +111,7 @@ playAnimationSwitch?.addEventListener("calciteSwitchChange", () => {
   };
 });
 
+// update the image element animation options when the duration input changes
 durationInput.addEventListener("calciteInputNumberChange", (event) => {
   const target = event.target as HTMLCalciteInputNumberElement;
   imageElement.animationOptions = {
@@ -107,6 +120,7 @@ durationInput.addEventListener("calciteInputNumberChange", (event) => {
   };
 });
 
+// update the image element animation options when the repeat type select changes
 repeatTypeSelect.addEventListener("calciteSelectChange", (event) => {
   const target = event.target as HTMLCalciteSelectElement;
   imageElement.animationOptions = {
@@ -115,6 +129,7 @@ repeatTypeSelect.addEventListener("calciteSelectChange", (event) => {
   };
 });
 
+// update the image element animation options when the repeat delay input changes
 repeatDelayInput.addEventListener("calciteInputNumberChange", (event) => {
   const target = event.target as HTMLCalciteInputNumberElement;
   imageElement.animationOptions = {
