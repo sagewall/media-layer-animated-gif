@@ -19,7 +19,7 @@ import "@esri/calcite-components/dist/components/calcite-slider";
 import "@esri/calcite-components/dist/components/calcite-switch";
 import "./style.css";
 
-setAssetPath("https://js.arcgis.com/calcite-components/1.6.0/assets");
+setAssetPath("https://js.arcgis.com/calcite-components/1.9.1/assets");
 
 const imageUrl =
   "https://cdn.star.nesdis.noaa.gov/GOES16/ABI/CONUS/GEOCOLOR/GOES16-CONUS-GEOCOLOR-625x375.gif";
