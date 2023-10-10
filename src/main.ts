@@ -46,7 +46,7 @@ imageElement.animationOptions = {
   repeatDelay: 0,
 };
 
-let mediaLayer = new MediaLayer({
+const mediaLayer = new MediaLayer({
   source: [imageElement],
 });
 
@@ -97,7 +97,6 @@ playAnimationSwitch?.addEventListener("calciteSwitchChange", () => {
     ...imageElement.animationOptions,
     playAnimation: !imageElement.animationOptions.playAnimation,
   };
-  refreshMediaLayer();
 });
 
 durationInput.addEventListener("calciteInputNumberChange", (event) => {
@@ -106,7 +105,6 @@ durationInput.addEventListener("calciteInputNumberChange", (event) => {
     ...imageElement.animationOptions,
     duration: Number(target.value),
   };
-  refreshMediaLayer();
 });
 
 repeatTypeSelect.addEventListener("calciteSelectChange", (event) => {
@@ -115,7 +113,6 @@ repeatTypeSelect.addEventListener("calciteSelectChange", (event) => {
     ...imageElement.animationOptions,
     repeatType: target.value as "loop" | "none" | "oscillate" | undefined,
   };
-  refreshMediaLayer();
 });
 
 repeatDelayInput.addEventListener("calciteInputNumberChange", (event) => {
@@ -124,15 +121,4 @@ repeatDelayInput.addEventListener("calciteInputNumberChange", (event) => {
     ...imageElement.animationOptions,
     repeatDelay: Number(target.value),
   };
-  refreshMediaLayer();
 });
-
-function refreshMediaLayer() {
-  map.layers.forEach((layer) => {
-    layer.type === "media" && map.layers.remove(layer);
-  });
-  mediaLayer = new MediaLayer({
-    source: [imageElement],
-  });
-  map.layers.add(mediaLayer);
-}
