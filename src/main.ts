@@ -104,10 +104,10 @@ const repeatTypeSelect = document.getElementById(
 ) as HTMLCalciteSelectElement;
 
 // update the image element animation options when the play animation switch is toggled
-playAnimationSwitch?.addEventListener("calciteSwitchChange", () => {
+playAnimationSwitch.addEventListener("calciteSwitchChange", () => {
   imageElement.animationOptions = {
     ...imageElement.animationOptions,
-    playAnimation: !imageElement.animationOptions.playAnimation,
+    playAnimation: imageElement.animationOptions.playAnimation,
   };
 });
 
