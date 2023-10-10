@@ -107,7 +107,7 @@ const repeatTypeSelect = document.getElementById(
 playAnimationSwitch.addEventListener("calciteSwitchChange", () => {
   imageElement.animationOptions = {
     ...imageElement.animationOptions,
-    playAnimation: imageElement.animationOptions.playAnimation,
+    playAnimation: !imageElement.animationOptions.playAnimation,
   };
 });
 
