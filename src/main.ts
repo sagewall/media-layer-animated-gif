@@ -103,7 +103,7 @@ const repeatTypeSelect = document.getElementById(
   "repeatTypeSelect"
 ) as HTMLCalciteSelectElement;
 
-// update the image element animation options when the play animation switch is toggled
+// update the image element animation options when the playing switch is toggled
 playingSwitch.addEventListener("calciteSwitchChange", () => {
   imageElement.animationOptions = {
     ...imageElement.animationOptions,
