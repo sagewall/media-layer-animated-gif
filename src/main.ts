@@ -43,7 +43,7 @@ const imageElement = new ImageElement({
 
 // set the animation options
 imageElement.animationOptions = {
-  playAnimation: true,
+  playing: true,
   duration: 4,
   repeatType: "oscillate",
   repeatDelay: 0,
@@ -88,9 +88,9 @@ const durationInput = document.getElementById(
   "durationInput"
 ) as HTMLCalciteInputNumberElement;
 
-// get a reference to the play animation switch
-const playAnimationSwitch = document.getElementById(
-  "playAnimationSwitch"
+// get a reference to the playing switch
+const playingSwitch = document.getElementById(
+  "playingSwitch"
 ) as HTMLCalciteSwitchElement;
 
 // get a reference to the repeat delay input
@@ -104,10 +104,10 @@ const repeatTypeSelect = document.getElementById(
 ) as HTMLCalciteSelectElement;
 
 // update the image element animation options when the play animation switch is toggled
-playAnimationSwitch.addEventListener("calciteSwitchChange", () => {
+playingSwitch.addEventListener("calciteSwitchChange", () => {
   imageElement.animationOptions = {
     ...imageElement.animationOptions,
-    playAnimation: !imageElement.animationOptions.playAnimation,
+    playing: !imageElement.animationOptions.playing,
   };
 });
 
