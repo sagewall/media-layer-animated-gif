@@ -5,6 +5,9 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import MediaLayer from "@arcgis/core/layers/MediaLayer";
 import ExtentAndRotationGeoreference from "@arcgis/core/layers/support/ExtentAndRotationGeoreference";
 import ImageElement from "@arcgis/core/layers/support/ImageElement";
+import SimpleRenderer from "@arcgis/core/renderers/SimpleRenderer";
+import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
+import SimpleLineSymbol from "@arcgis/core/symbols/SimpleLineSymbol";
 import MapView from "@arcgis/core/views/MapView";
 import "@esri/calcite-components/dist/calcite/calcite.css";
 import { setAssetPath } from "@esri/calcite-components/dist/components";
@@ -54,6 +57,18 @@ const mediaLayer = new MediaLayer({
   source: [imageElement],
 });
 
+// create a simple renderer for the states feature layer
+const renderer = new SimpleRenderer({
+  symbol: new SimpleFillSymbol({
+    color: "#98816c",
+    style: "solid",
+    outline: new SimpleLineSymbol({
+      width: 0.5,
+      color: "white",
+    }),
+  }),
+});
+
 // create a feature layer to show state boundaries
 const statesFeatureLayer = new FeatureLayer({
   portalItem: {
@@ -61,6 +76,7 @@ const statesFeatureLayer = new FeatureLayer({
   },
   minScale: 0,
   popupEnabled: false,
+  renderer,
 });
 
 // create a map with the media layer and the states layer
@@ -72,7 +88,7 @@ const map = new Map({
 // create a map view
 new MapView({
   background: {
-    color: "gray",
+    color: "#0c2a3b",
   },
   center: [-90, 30],
   map,
