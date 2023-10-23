@@ -22,7 +22,7 @@ import "@esri/calcite-components/dist/components/calcite-slider";
 import "@esri/calcite-components/dist/components/calcite-switch";
 import "./style.css";
 
-setAssetPath("https://js.arcgis.com/calcite-components/1.9.1/assets");
+setAssetPath("https://js.arcgis.com/calcite-components/1.9.2/assets");
 
 // a url to an animated gif from the GOES satellite available from NOAA
 const imageUrl =
