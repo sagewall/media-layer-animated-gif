@@ -1,6 +1,8 @@
+import Graphic from "@arcgis/core/Graphic";
 import Map from "@arcgis/core/Map";
 import "@arcgis/core/assets/esri/themes/light/main.css";
 import Extent from "@arcgis/core/geometry/Extent";
+import Polygon from "@arcgis/core/geometry/Polygon";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import MediaLayer from "@arcgis/core/layers/MediaLayer";
 import ExtentAndRotationGeoreference from "@arcgis/core/layers/support/ExtentAndRotationGeoreference";
@@ -58,7 +60,7 @@ const mediaLayer = new MediaLayer({
 });
 
 // create a simple renderer for the states feature layer
-const renderer = new SimpleRenderer({
+const statesRenderer = new SimpleRenderer({
   symbol: new SimpleFillSymbol({
     color: "#98816c",
     style: "solid",
@@ -76,21 +78,61 @@ const statesFeatureLayer = new FeatureLayer({
   },
   minScale: 0,
   popupEnabled: false,
-  renderer,
+  renderer: statesRenderer,
 });
 
-// create a map with the media layer and the states layer
+// create a graphic to use as the background for the map
+const backgroundPolygonGraphic = new Graphic({
+  geometry: new Polygon({
+    rings: [
+      [
+        [-180, -90],
+        [-180, 90],
+        [180, 90],
+        [180, -90],
+        [-180, -90],
+      ],
+    ],
+  }),
+});
+
+// create a simple renderer for the background feature layer
+const backgroundRenderer = new SimpleRenderer({
+  symbol: new SimpleFillSymbol({
+    color: "#0c2a3b",
+    style: "solid",
+    outline: new SimpleLineSymbol({
+      width: 0.5,
+      color: "white",
+    }),
+  }),
+});
+
+// create a feature layer to show the background
+const backgroundFeatureLayer = new FeatureLayer({
+  source: [backgroundPolygonGraphic],
+  objectIdField: "OBJECTID",
+  fields: [
+    {
+      name: "OBJECTID",
+      type: "oid",
+    },
+  ],
+  renderer: backgroundRenderer,
+});
+
+// create a map with the media layer and the feature layers
 const map = new Map({
   basemap: "topo-vector",
-  layers: [statesFeatureLayer, mediaLayer],
+  layers: [backgroundFeatureLayer, statesFeatureLayer, mediaLayer],
 });
 
 // create a map view
 new MapView({
   background: {
-    color: "#0c2a3b",
+    color: "black",
   },
-  center: [-90, 30],
+  center: [-87, 30],
   map,
   container: "viewDiv",
   scale: 25000000,
